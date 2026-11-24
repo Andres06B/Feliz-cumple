@@ -1,0 +1,975 @@
+:root {
+  --cream: #fff8f3;
+  --paper: #fffdf9;
+  --pink: #e8bbc3;
+  --rose: #b87885;
+  --deep: #634e50;
+  --muted: #9b8582;
+  --line: #efded9;
+  --sage: #c4cfb9;
+  --gold: #d8bd83;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  color: var(--deep);
+  font-family: "DM Sans", sans-serif;
+  background: #f8e9e7;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+.gift-world {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 35px 18px 22px;
+  background:
+ /* FONDO SNOOPY DE TODA LA EXPERIENCIA:
+    coloca un patrón/fondo en assets/fondos/fondo-snoopy.jpg y descomenta la línea siguiente.
+    Puedes usar un fondo repetible con Snoopy, Woodstock, huellitas y corazones en tonos pastel. */
+    radial-gradient(circle at 12% 15%, #fffdf8 0 2px, transparent 3px),
+    radial-gradient(circle at 86% 76%, #fffdf8 0 3px, transparent 4px),
+    radial-gradient(ellipse at 20% 10%, #f8e4e2, transparent 42%),
+    radial-gradient(ellipse at 90% 85%, #eadbd5, transparent 40%), #f6e9e5;
+  background-image:
+    linear-gradient(#fff8f3bb, #fff8f3bb), url("assets/fondos/fondo-snoopy.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.paper-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+}
+.ambient {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.ambient-one {
+  background: #e8b9c4;
+  top: 4%;
+  left: -140px;
+}
+.ambient-two {
+  background: #e3d5b9;
+  right: -150px;
+  bottom: 5%;
+}
+.floating-decor {
+  position: fixed;
+  color: #bd8790;
+  z-index: 1;
+  pointer-events: none;
+}
+.decor-heart {
+  top: 12%;
+  right: 5%;
+  font-size: 45px;
+  transform: rotate(12deg);
+}
+.decor-star {
+  bottom: 13%;
+  left: 5%;
+  font-size: 38px;
+}
+.gift-shell {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  background: #fffaf6ed;
+  border: 1px solid #fff;
+  border-radius: 28px;
+  box-shadow: 0 25px 90px #76565a25;
+  overflow: hidden;
+  min-height: 700px;
+}
+.top-note {
+  text-align: center;
+  padding: 17px 10px 13px;
+  font-size: 9px;
+  letter-spacing: 2.4px;
+  color: #b08489;
+  border-bottom: 1px dashed #ead8d4;
+}
+.top-note span {
+  padding: 0 12px;
+  color: #d4a7a8;
+}
+.intro-screen {
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 55px 9%;
+  gap: 20px;
+  background:
+    radial-gradient(ellipse at 72% 53%, #f6e2e0 0, transparent 42%),
+    radial-gradient(circle at 12% 85%, #f8eee2 0, transparent 32%), #fffaf6;
+}
+.intro-copy {
+  position: relative;
+  z-index: 2;
+}
+.tiny-label {
+  font-size: 9px;
+  letter-spacing: 2.3px;
+  font-weight: 700;
+  color: var(--rose);
+}
+.intro-copy h1 {
+  font:
+    500 clamp(48px, 6vw, 75px)/0.98 "Playfair Display",
+    serif;
+  letter-spacing: -2px;
+  margin: 20px 0;
+  color: #634e50;
+}
+.intro-copy h1 em,
+.panel-heading h2 em,
+.welcome-text h2 em {
+  color: var(--rose);
+  font-weight: 500;
+}
+.intro-line {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #9b8582;
+  max-width: 320px;
+}
+.tap-hint {
+  margin-top: 48px;
+  color: #b18c8e;
+  font:
+    italic 14px "Playfair Display",
+    serif;
+}
+.tap-hint span {
+  padding-left: 9px;
+}
+.gift-box {
+  position: relative;
+  justify-self: center;
+  width: 300px;
+  height: 290px;
+  border: 0;
+  background: transparent;
+  filter: drop-shadow(0 22px 22px #7e5b5a20);
+  transition: transform 0.35s;
+}
+.gift-box:hover {
+  transform: translateY(-7px) rotate(-1deg);
+}
+.gift-glow {
+  position: absolute;
+  width: 300px;
+  height: 220px;
+  left: 0;
+  top: 35px;
+  border-radius: 50%;
+  background: #eac7c5;
+  filter: blur(35px);
+  opacity: 0.45;
+}
+.gift-box-front {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 25px;
+  height: 165px;
+  background: #d99fa8;
+  border: 5px solid #f2d5d5;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px #c98590;
+}
+.gift-lid {
+  position: absolute;
+  z-index: 3;
+  left: 20px;
+  right: 20px;
+  bottom: 175px;
+  height: 42px;
+  border-radius: 6px;
+  background: #bd7e8b;
+  border: 4px solid #f4dadd;
+  box-shadow: 0 8px 10px #875b6325;
+  transition: 0.65s;
+}
+.gift-ribbon {
+  position: absolute;
+  z-index: 4;
+  background: #f8e7d5;
+}
+.ribbon-vertical {
+  width: 35px;
+  height: 215px;
+  left: calc(50% - 17px);
+  bottom: 25px;
+}
+.ribbon-horizontal {
+  height: 25px;
+  left: 32px;
+  right: 32px;
+  bottom: 90px;
+}
+.gift-bow {
+  position: absolute;
+  z-index: 5;
+  bottom: 202px;
+  left: calc(50% - 31px);
+  font-size: 53px;
+  transform: rotate(-10deg);
+  transition: 0.5s;
+}
+.gift-box-label {
+  position: absolute;
+  z-index: 5;
+  bottom: 72px;
+  left: 0;
+  right: 0;
+  color: #fff8f3;
+  font:
+    italic 22px "Playfair Display",
+    serif;
+}
+.gift-box-snoopy {
+  position: absolute;
+  z-index: 6;
+  bottom: 30px;
+  right: 35px;
+  width: 76px;
+  height: 85px;
+  display: grid;
+  place-items: center;
+}
+.gift-box-snoopy img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.snoopy-fallback {
+  display: none;
+  font-size: 45px;
+}
+.gift-box.opened .gift-lid {
+  transform: translate(20px, -90px) rotate(14deg);
+}
+.gift-box.opened .gift-bow {
+  transform: translate(35px, -100px) rotate(25deg);
+  opacity: 0;
+}
+.gift-box.opened {
+  animation: boxOpen 0.7s ease;
+}
+.open-instruction {
+  grid-column: 1/-1;
+  text-align: center;
+  margin: -5px 0 5px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #b18d8d;
+}
+.gift-content {
+  display: none;
+  padding: 0 6.5% 35px;
+  animation: fadeIn 0.8s ease;
+}
+.gift-content.revealed {
+  display: block;
+}
+.inside-header {
+  text-align: center;
+  padding: 30px 0 18px;
+  position: relative;
+}
+.mini-brand {
+  font:
+    600 26px "Playfair Display",
+    serif;
+  letter-spacing: 1px;
+}
+.mini-brand span {
+  color: var(--rose);
+}
+.inside-header p {
+  font:
+    italic 12px "Playfair Display",
+    serif;
+  color: #a78b88;
+  margin: 5px;
+}
+.header-snoopy {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  right: 8%;
+  top: 22px;
+}
+.memory-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 0 25px;
+  border-bottom: 1px dashed #ead8d4;
+}
+.tab,
+.filter {
+  border: 1px solid #eddbd7;
+  background: #fffaf6;
+  color: #987d7e;
+  border-radius: 30px;
+  padding: 10px 17px;
+  font-size: 11px;
+  transition: 0.2s;
+}
+.tab.active,
+.tab:hover,
+.filter.active,
+.filter:hover {
+  background: #eacbd0;
+  border-color: #eacbd0;
+  color: #714f56;
+}
+.panel {
+  display: none;
+  padding: 35px 0 25px;
+  min-height: 440px;
+  animation: fadeIn 0.45s ease;
+}
+.panel.active {
+  display: block;
+}
+.welcome-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 25px;
+  background: #f8eeeb;
+  border: 1px solid #f0dfdb;
+  border-radius: 22px;
+  padding: 35px 38px;
+  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+.welcome-text h2 {
+  font:
+    500 clamp(36px, 4.4vw, 52px)/1.08 "Playfair Display",
+    serif;
+  margin: 13px 0;
+  color: #634e50;
+  letter-spacing: -1px;
+}
+.welcome-text > p:not(.tiny-label) {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #927c79;
+  max-width: 390px;
+}
+.soft-button,
+.surprise-button {
+  border: 1px solid #d9b0b5;
+  background: #fffaf6;
+  color: #916872;
+  border-radius: 30px;
+  padding: 12px 17px;
+  font-size: 10px;
+  margin-top: 12px;
+  transition: 0.2s;
+}
+.soft-button:hover,
+.surprise-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #76565a18;
+}
+.welcome-art {
+  height: 280px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #f4e1df;
+  border-radius: 48% 52% 44% 56%/52% 42% 58% 48%;
+  border: 1px dashed #dfb8b7;
+}
+.welcome-art > img {
+  max-width: 110%;
+  max-height: 115%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 12px #7d5a5a20);
+  animation: gentleFloat 4.5s ease-in-out infinite;
+}
+.art-placeholder {
+  display: grid;
+  place-items: center;
+  font-size: 65px;
+  color: #b77f87;
+}
+.art-placeholder small {
+  font:
+    italic 11px "Playfair Display",
+    serif;
+  color: #9d7b7b;
+}
+.art-heart,
+.art-flower {
+  position: absolute;
+  color: #bc818c;
+  font-size: 38px;
+}
+.art-heart {
+  top: 8%;
+  right: 6%;
+}
+.art-flower {
+  bottom: 7%;
+  left: 4%;
+  color: #aab99d;
+}
+.tiny-message {
+  text-align: center;
+  font:
+    italic 14px "Playfair Display",
+    serif;
+  color: #a58b87;
+  padding: 23px 5px 8px;
+}
+.tiny-message span {
+  color: var(--rose);
+}
+.snoopy-sticker-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 48px;
+  color: #b08489;
+  font:
+    italic 12px "Playfair Display",
+    serif;
+}
+.snoopy-sticker-row img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+.panel-heading {
+  text-align: center;
+  margin-bottom: 27px;
+}
+.panel-heading h2 {
+  font:
+    500 clamp(34px, 4vw, 48px)/1.1 "Playfair Display",
+    serif;
+  margin: 10px 0;
+  color: #634e50;
+}
+.panel-heading > p:last-child {
+  font-size: 12px;
+  color: #9b8582;
+}
+.filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 0 0 28px;
+}
+.filter {
+  padding: 8px 14px;
+  font-size: 10px;
+}
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 850px;
+  margin: auto;
+}
+.polaroid {
+  background: white;
+  padding: 9px 9px 35px;
+  box-shadow: 0 8px 22px #77595a13;
+  transform: rotate(var(--tilt));
+  position: relative;
+  cursor: zoom-in;
+  transition: 0.25s;
+}
+.polaroid:hover {
+  transform: rotate(0) translateY(-5px);
+  box-shadow: 0 14px 30px #77595a20;
+  z-index: 2;
+}
+.polaroid img {
+  width: 100%;
+  height: 175px;
+  display: block;
+  object-fit: cover;
+  background: #f1e2de;
+}
+.polaroid .caption {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
+  text-align: center;
+  font:
+    italic 13px "Playfair Display",
+    serif;
+  color: #927978;
+}
+.polaroid .tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #fffaf0dd;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 8px;
+  color: #9c7777;
+}
+.panel-footer {
+  text-align: center;
+  font:
+    italic 13px "Playfair Display",
+    serif;
+  color: #b08d8d;
+  margin-top: 28px;
+}
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.favorite-card {
+  border: 1px solid #efdfdb;
+  background: #fffaf6;
+  border-radius: 16px;
+  text-align: center;
+  padding: 23px 14px;
+  transition: 0.25s;
+}
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px #79595a12;
+}
+.favorite-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.favorite-card h3 {
+  font:
+    500 20px "Playfair Display",
+    serif;
+  margin: 0 0 7px;
+}
+.favorite-card p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #9a8581;
+  margin: 0;
+}
+.snoopy-quote {
+  margin: 28px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  background: #f7ece8;
+  border-radius: 15px;
+  padding: 13px 20px;
+  max-width: 580px;
+}
+.snoopy-quote img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+.snoopy-quote p {
+  font:
+    italic 15px "Playfair Display",
+    serif;
+  color: #92767a;
+}
+.letter-area {
+  display: grid;
+  place-items: center;
+  min-height: 330px;
+}
+.letter-envelope {
+  width: 260px;
+  height: 165px;
+  border: 0;
+  background: #e7bfc3;
+  position: relative;
+  box-shadow: 0 12px 28px #76565a1b;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.letter-envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f2d9d6;
+  clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+}
+.letter-flap {
+  position: absolute;
+  inset: 0;
+  background: #d6a5ad;
+  clip-path: polygon(0 0, 100% 0, 50% 62%);
+  z-index: 2;
+}
+.letter-seal {
+  position: absolute;
+  z-index: 3;
+  top: 62px;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 30px;
+}
+.letter-envelope-text,
+.letter-tap {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  color: #8e6970;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.letter-envelope-text {
+  bottom: 36px;
+}
+.letter-tap {
+  bottom: 13px;
+  font-style: italic;
+  letter-spacing: 0;
+}
+.letter-paper {
+  display: none;
+  width: min(100%, 570px);
+  background: #fffdf7;
+  border: 1px solid #eee0d5;
+  box-shadow: 0 15px 35px #76565a1a;
+  padding: 35px 42px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #806e6a;
+  animation: fadeIn 0.5s;
+}
+.letter-paper.open {
+  display: block;
+}
+.letter-paper h3 {
+  font:
+    500 31px "Playfair Display",
+    serif;
+  color: #75595c;
+  margin: 8px 0 17px;
+}
+.letter-paper p {
+  margin: 0 0 13px;
+}
+.letter-paper .signature {
+  font:
+    italic 16px "Playfair Display",
+    serif;
+  margin-top: 22px;
+}
+.signature em {
+  color: var(--rose);
+}
+.inside-footer {
+  text-align: center;
+  border-top: 1px dashed #ead8d4;
+  padding: 25px 10px 8px;
+}
+.footer-snoopy {
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.footer-snoopy img {
+  height: 48px;
+  max-width: 75px;
+  object-fit: contain;
+}
+.footer-snoopy span {
+  color: var(--rose);
+  font-size: 20px;
+}
+.inside-footer > p {
+  font:
+    italic 15px "Playfair Display",
+    serif;
+  color: #987d7d;
+}
+.surprise-button {
+  background: #bd818c;
+  color: white;
+  border: 0;
+  padding: 12px 20px;
+}
+.inside-footer small {
+  display: block;
+  margin-top: 20px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #b69c98;
+}
+.bottom-doodle {
+  text-align: center;
+  padding: 19px 0 0;
+  font:
+    italic 12px "Playfair Display",
+    serif;
+  color: #a88889;
+  position: relative;
+  z-index: 2;
+}
+.bottom-doodle span {
+  color: var(--rose);
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #302426ef;
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+}
+.lightbox.show {
+  display: flex;
+}
+.lightbox img {
+  max-width: min(85vw, 650px);
+  max-height: 75vh;
+  object-fit: contain;
+  background: white;
+  padding: 9px 9px 30px;
+}
+.lightbox p {
+  color: white;
+  font:
+    italic 16px "Playfair Display",
+    serif;
+}
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  border: 0;
+  background: none;
+  color: white;
+  font-size: 40px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes boxOpen {
+  50% {
+    transform: scale(1.04);
+  }
+}
+@media (max-width: 760px) {
+  .gift-world {
+    padding: 12px 9px 18px;
+  }
+  .gift-shell {
+    border-radius: 19px;
+  }
+  .intro-screen {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 45px 7% 35px;
+    min-height: 0;
+  }
+  .intro-copy h1 {
+    font-size: 57px;
+  }
+  .intro-line {
+    margin: auto;
+  }
+  .gift-box {
+    margin: 8px auto 0;
+    width: 270px;
+    height: 255px;
+    transform: scale(0.9);
+  }
+  .gift-box:hover {
+    transform: scale(0.9) translateY(-5px);
+  }
+  .open-instruction {
+    margin: 0 0 8px;
+  }
+  .gift-content {
+    padding: 0 5% 25px;
+  }
+  .header-snoopy {
+    right: 1%;
+    width: 45px;
+  }
+  .welcome-card {
+    grid-template-columns: 1fr;
+    padding: 26px 22px;
+    gap: 8px;
+  }
+  .welcome-text {
+    text-align: center;
+  }
+  .welcome-text > p:not(.tiny-label) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .welcome-art {
+    width: min(100%, 280px);
+    height: 235px;
+    margin: 8px auto;
+  }
+  .polaroid-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .polaroid img {
+    height: 145px;
+  }
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .decor-heart {
+    right: 1%;
+    top: 7%;
+    font-size: 30px;
+  }
+  .decor-star {
+    left: 1%;
+    bottom: 6%;
+  }
+}
+@media (max-width: 390px) {
+  .intro-copy h1 {
+    font-size: 49px;
+  }
+  .tab {
+    padding: 9px 12px;
+    font-size: 10px;
+  }
+  .polaroid img {
+    height: 120px;
+  }
+  .letter-paper {
+    padding: 26px 23px;
+  }
+}
+
+/* FAVORITOS: tarjetas con imágenes y GIF */
+
+.favorite-card {
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(214, 160, 169, 0.25);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.favorite-card:hover {
+  transform: translateY(-7px) rotate(-1deg);
+  box-shadow: 0 12px 30px rgba(180, 120, 135, 0.16);
+}
+
+.favorite-media {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  background: #f9e9e9;
+}
+
+.favorite-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.favorite-card:hover .favorite-media img {
+  transform: scale(1.07);
+}
+
+.favorite-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  font-size: 55px;
+}
+
+.favorite-info {
+  padding: 17px;
+  text-align: center;
+}
+
+.favorite-info h3 {
+  margin: 0 0 8px;
+  color: #875d69;
+}
+
+.favorite-info p {
+  margin: 0;
+  color: #927b80;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .favorite-media {
+    height: 145px;
+  }
+
+  .favorite-info {
+    padding: 12px;
+  }
+}

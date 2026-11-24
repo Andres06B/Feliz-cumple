@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8e9e7" />
+    <title>Espero y te Guste...... ♡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <audio id="birthdayMusic" loop>
+      <source src="assets/musica/snoopy.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="gift-world">
+      <div class="paper-texture"></div>s
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="floating-decor decor-heart">♡</div>
+      <div class="floating-decor decor-star">✧</div>
+
+      <main class="gift-shell">
+        <div class="top-note">
+          <span>✿</span> UN DETALLE HECHO CON CARIÑO <span>✿</span>
+        </div>
+
+        <!-- PORTADA: cambia el PNG/JPG de Snoopy aquí. Mantén el comentario para ubicarlo. -->
+        <section class="intro-screen" id="introScreen">
+          <div class="intro-copy">
+            <p class="tiny-label">PARA UNA PERSONITA ESPECIAL</p>
+            <h1>Un regalo<br />para <em>Gaspy</em></h1>
+            <p class="intro-line">
+              Preparé un pequeño mundo con algunas de tus cosas favoritas...
+            </p>
+            <p class="tap-hint">Hay algo esperando por ti <span>↓</span></p>
+          </div>
+
+          <button
+            class="gift-box"
+            id="openGift"
+            type="button"
+            aria-label="Abrir el regalo"
+          >
+            <span class="gift-glow"></span>
+            <span class="gift-ribbon ribbon-vertical"></span>
+            <span class="gift-ribbon ribbon-horizontal"></span>
+            <span class="gift-bow">🎀</span>
+            <span class="gift-lid"></span>
+            <span class="gift-box-front"></span>
+            <span class="gift-box-label">para ti ♡</span>
+            <span class="gift-box-snoopy">
+              <!-- IMAGEN SNOOPY EN LA CAJA: reemplaza snoopy-regalo.png por tu imagen.
+                 Ideal: PNG transparente de Snoopy sentado o abrazando un corazón. -->
+              <img
+                src="assets/snoopy/snoopy-regalo.png"
+                alt="Snoopy con un regalito"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'block';
+                "
+              />
+              <span class="snoopy-fallback">🐶</span>
+            </span>
+          </button>
+          <p class="open-instruction">TOCA EL REGALO PARA DESCUBRIRLO</p>
+        </section>
+
+        <section class="gift-content" id="giftContent" aria-hidden="true">
+          <header class="inside-header">
+            <div class="mini-brand">GASPY <span>♡</span></div>
+            <p>tu pequeño rincón de cosas bonitas</p>
+            <!-- SNOOPY DECORATIVO SUPERIOR: agrega aquí una imagen PNG transparente si deseas. -->
+            <img
+              class="header-snoopy"
+              src="assets/snoopy/snoppyflor.png"
+              alt=""
+              onerror="this.style.display = 'none'"
+            />
+          </header>
+
+          <nav class="memory-tabs" aria-label="Secciones del regalo">
+            <button class="tab active" data-panel="welcome">Inicio</button>
+            <button class="tab" data-panel="photos">Recuerdos</button>
+            <button class="tab" data-panel="favorites">Sus favoritos</button>
+            <button class="tab" data-panel="letter">Mi mensaje</button>
+            <button class="tab" data-panel="letter">
+              Este es boton de queja pq conmigo no tienen foto ksksk
+            </button>
+          </nav>
+
+          <section class="panel active" id="panel-welcome">
+            <div class="welcome-card">
+              <div class="welcome-text">
+                <p class="tiny-label">BIENVENIDA A TU REGALITO</p>
+                <h2>¡Feliz cumpleaños,<br /><em>Gaspy!</em></h2>
+                <p>
+                  Este rinconcito está hecho pensando en ti, en tus gustos, en
+                  las personas que quieres y en todas esas pequeñas cosas que te
+                  hacen única.
+                </p>
+                <button class="soft-button" data-go="photos">
+                  Ver nuestros recuerdos favoritos ↗
+                </button>
+              </div>
+              <div class="welcome-art">
+                <!-- SNOOPY PROTAGONISTA: coloca aquí tu ilustración PNG transparente.
+                   Recomendado: Snoopy acostado sobre su casita / con Woodstock.
+                   Archivo: assets/snoopy/snoopy-protagonista.png -->
+                <img
+                  src="assets/snoopy/snoopy.png"
+                  alt="Snoopy y Woodstock"
+                  onerror="
+                    this.style.display = 'none';
+                    this.nextElementSibling.style.display = 'grid';
+                  "
+                />
+                <span class="art-placeholder"
+                  >🐶<small>Aquí va tu Snoopy favorito</small></span
+                >
+                <span class="art-heart">♡</span
+                ><span class="art-flower">✿</span>
+              </div>
+            </div>
+            <div class="tiny-message">
+              Un regalo no necesita ser enorme para guardar mucho cariño.
+              <span>♡</span>
+            </div>
+            <div class="snoopy-sticker-row">
+              <!-- STICKERS: duplica esta etiqueta img para poner más Snoopy/ Woodstock.
+                 Ejemplo: <img src="assets/snoopy/woodstock.png" alt=""> -->
+              <img
+                src="assets/snoopy/woodstock.png"
+                alt="Woodstock"
+                onerror="this.style.display = 'none'"
+              />
+              <span>hecho con mucho cariño</span>
+              <img
+                src="assets/snoopy/snoopy-mini.png"
+                alt="Snoopy"
+                onerror="this.style.display = 'none'"
+              />
+            </div>
+          </section>
+
+          <section class="panel" id="panel-photos">
+            <div class="panel-heading">
+              <p class="tiny-label">CAPÍTULO 01 · SUS MOMENTOS</p>
+              <h2>Pedacitos de <em>su historia</em></h2>
+              <p>Instantes que merecen quedarse guardados.</p>
+            </div>
+            <div class="filter-row" id="photoFilters">
+              <button class="filter active" data-filter="todos">Todos</button>
+              <button class="filter" data-filter="ella">Ella</button>
+              <button class="filter" data-filter="familia">Familia</button>
+              <button class="filter" data-filter="amigos">Amigos</button>
+              <button class="filter" data-filter="momentos">Momentos</button>
+            </div>
+            <div class="polaroid-grid" id="photoGrid"></div>
+            <p class="panel-footer">Cada foto, un pedacito de felicidad. ♡</p>
+          </section>
+
+          <section class="panel" id="panel-favorites">
+            <div class="panel-heading">
+              <p class="tiny-label">CAPÍTULO 02 · SU PEQUEÑO MUNDO</p>
+              <h2>Cosas que hacen <em>brillar sus días</em></h2>
+              <p>
+                Sus gustos, sus pasiones y esas pequeñas obsesiones bonitas.
+              </p>
+            </div>
+            <div class="favorites-grid" id="likesGrid"></div>
+            <div class="snoopy-quote">
+              <!-- SNOOPY EN FAVORITOS: agrega una imagen aquí si quieres decorar esta tarjeta. -->
+              <img
+                src="assets/snoopy/corazon snoopy.png"
+                alt=""
+                onerror="this.style.display = 'none'"
+              />
+              <p>
+                “Que nunca te falten motivos para hacer lo que te hace feliz”.
+              </p>
+            </div>
+          </section>
+
+          <section class="panel" id="panel-letter">
+            <div class="panel-heading">
+              <p class="tiny-label">CAPÍTULO 03 · UNAS PALABRITAS</p>
+              <h2>Algo que quería <em>decirte</em></h2>
+              <p>Abre el sobre. Hay un mensajito para ti.</p>
+            </div>
+            <div class="letter-area">
+              <button class="letter-envelope" id="openLetter" type="button">
+                <span class="letter-flap"></span
+                ><span class="letter-seal">♡</span>
+                <span class="letter-envelope-text">PARA GASPY</span>
+                <span class="letter-tap">toca para abrir</span>
+              </button>
+              <article class="letter-paper" id="letter" aria-hidden="true">
+                <p class="tiny-label">CON MUCHO CARIÑO</p>
+                <h3>¡Feliz cumpleaños! ♡</h3>
+                <div id="letterBody"></div>
+                <p class="signature">
+                  Con cariño,<br /><em>alguien que te aprecia ♡</em>
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <footer class="inside-footer">
+            <div class="footer-snoopy">
+              <!-- SNOOPY FINAL: imagen pequeña opcional, por ejemplo Snoopy saludando. -->
+              <img
+                src="assets/snoopy/floress.png"
+                alt=""
+                onerror="this.style.display = 'none'"
+              />
+              <span>♡</span>
+            </div>
+            <p>Que la vida te regale un año precioso, mi Niña.</p>
+            <button class="surprise-button" id="celebrate" type="button">
+              Una última sorpresa ✨
+            </button>
+            <small>UN DETALLE HECHO PARA TI</small>
+          </footer>
+        </section>
+      </main>
+      <div class="bottom-doodle">Snoopy's little corner <span>♡</span></div>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" id="closeLightbox" aria-label="Cerrar">
+        ×
+      </button>
+      <img id="lightboxImage" src="" alt="" />
+      <p id="lightboxCaption"></p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
